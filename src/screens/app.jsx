@@ -5,10 +5,10 @@ class App extends Component {
     return (
       <div>
         <div>
-          <img src="static/media/webpack.svg" alt="Webpack" />
-          <img src="static/media/babeljs.svg" alt="BabelJS" />
-          <img src="static/media/reactjs.svg" alt="ReactJS" />
-          <img src="static/media/sass.svg" alt="Sass" />
+          <img src="static/media/webpack.png" alt="Webpack" />
+          <img src="static/media/babeljs.png" alt="BabelJS" />
+          <img src="static/media/reactjs.png" alt="ReactJS" />
+          <img src="static/media/sass.png" alt="Sass" />
         </div>
         <hr />
         <div>

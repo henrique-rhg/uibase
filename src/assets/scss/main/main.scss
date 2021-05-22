@@ -17,13 +17,15 @@ body {
   > div {
     padding: 2em;
     font-family: $font-family-monospace;
-    background-color: $backgroun;
+    background-color: $background;
     text-align: center;
-    color: $on-backgroun;
+    color: $on-background;
 
     img {
-      height: 3em;
       padding: 2em;
+    }
+    hr {
+      color: $on-background;
     }
     h1 {
       text-align: center;
