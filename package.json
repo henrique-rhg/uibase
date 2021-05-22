@@ -1,14 +1,14 @@
 {
-  "name": "skeleton",
+  "name": "uibase",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "bin/skeleton-scripts.js start",
-    "build": "bin/skeleton-scripts.js build"
+    "start": "bin/uibase.js start",
+    "build": "bin/uibase.js build"
   },
   "keywords": [],
   "author": "Ricardo Henrique <henrique.rhg@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "options": {
     "extensions": [
       ".js",
