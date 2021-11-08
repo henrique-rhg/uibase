@@ -1,0 +1,15 @@
+@use "sass:meta";
+@use "sass:map";
+
+:root {
+    --font-family-sans-serif: #{meta.inspect($font-family-sans-serif)};
+    --font-family-monospace: #{meta.inspect($font-family-monospace)};
+    
+    @each $offset, $value in map.get($colors, theme) {
+        --color-#{$offset}: #{$value};
+    }
+    
+    @each $offset, $value in map.get($colors, on-theme) {
+        --color-on-#{$offset}: #{$value};
+    }
+}

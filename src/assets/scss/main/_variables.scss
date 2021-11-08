@@ -1,6 +1,62 @@
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto !default;
+@use "sass:map";
+
+// font
+
+$font-family-sans-serif: Verdana, Arial, Helvetica, sans-serif !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas !default;
-$primary: #e9e9e9 !default;
-$on-primary: #303030 !default;
-$background: #797979 !default;
-$on-background: #eeeeee !default;
+
+$fonts: (
+    "family": (
+        "sans-serif": $font-family-sans-serif,
+        "monospace": $font-family-monospace
+    ),
+    "size": (
+        "initial": 12px,
+        "inherit": inherit,
+        "xx-small": 0.7em,
+        "x-small": 0.8em,
+        "small": 0.82em,
+        "medium": 1em,
+        "large": 1.5em,
+        "x-large": 2em,
+        "xx-large": 2.5em,
+        "xxx-large": 3em
+    ),
+    "weight": (
+        "initial": 400,
+        "inherit": inherit,
+        "lighter": lighter,
+        "light": 300,
+        "normal": 400,
+        "bold": 700,
+        "bolder": bolder
+    )
+) !default;
+
+// color
+
+$colors: (
+    "theme": (
+        "primary": #e9e9e9,
+        "background": #797979
+    ),
+    "on-theme": (
+        "primary": #303030,
+        "background": #eeeeee
+    ),
+    "link": (
+        "normal": #289BE8,
+        "visited": #9460B8,
+        "hover": #1162D9
+    )
+) !default;
+
+// others
+
+$escaped-characters: (
+  ("<", "%3c"),
+  (">", "%3e"),
+  ("#", "%23"),
+  ("(", "%28"),
+  (")", "%29"),
+) !default;

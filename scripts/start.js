@@ -1,28 +1,10 @@
 "use strict";
 
-const PROTOCOL = 'http';
-const HOST = 'localhost';
-const PORT = 3232;
-
-const webpackDevServer = require('webpack-dev-server');
-const webpack = require('webpack');
+const Webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
 const chalk = require('chalk');
 const config = require('../config/webpack.config.development');
 const paths = require('../config/paths');
-const options = {
-  contentBase: paths.public,
-  publicPath: config.output.publicPath,
-  compress: true,
-  clientLogLevel: 'none',
-  hot: true, 
-  open: true,
-  quiet: true,
-  watchOptions: {
-    ignored: /node_modules/
-  },
-  host: HOST,
-  port: PORT
-};
 
 function print(sumary, exceptions) {
   console.log(sumary);
@@ -37,15 +19,22 @@ function clearConsole() {
   process.stdout.write(process.platform === 'win32' ? '\x1Bc' : '\x1B[2J\x1B[3J\x1B[H');
 }
 
-webpackDevServer.addDevServerEntrypoints(config, options);
+const compiler = Webpack(config);
+const options = { ...config.devServer, open: true };
 
 var buildNumber = 0;
-
-const compiler = webpack(config);
 
 compiler.hooks.done.tap('done', (stats) => {
   const messages = stats.toJson({}, true);
   const isSuccess = !messages.errors.length && !messages.warnings.length;
+  const _port = options.port || 3000;
+  const _host = options.host || '127.0.0.1';
+  const _protocol = options.server.type || 'http';
+  let _server = _protocol + '://' + _host;
+
+  if (('http' == _protocol && '80' != _port) || ('https' == _protocol && '443' != _port)) {
+    _server += ':' + _port;
+  }
 
   buildNumber++;
 
@@ -59,7 +48,7 @@ compiler.hooks.done.tap('done', (stats) => {
     console.log();
     console.log('The app is running at:');
     console.log();
-    console.log('  ' + chalk.cyan(PROTOCOL + '://' + HOST + ':' + PORT + '/'));
+    console.log('  ' + chalk.cyan(_server));
     console.log();
     console.log('Note that the development build is not optimized.');
     console.log('To create a production build use ' + chalk.cyan('npm run build') + '.');
@@ -81,9 +70,9 @@ compiler.hooks.done.tap('done', (stats) => {
   }
 });
 
-const server = new webpackDevServer(compiler, options);
+const server = new WebpackDevServer(options, compiler);
 
-server.listen(PORT, 'localhost', (error) => {
+server.startCallback((error) => {
   if (error) {
     return console.log(error);
   }

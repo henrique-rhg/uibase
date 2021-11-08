@@ -1,6 +1,15 @@
+@charset "UTF-8";
 
 // settings
+
 @import "variables";
+@import "functions";
+
+// layout/components
+
+@import "root";
+
+// base
 
 body {
   width: 100%;
@@ -8,24 +17,24 @@ body {
   padding: 0;
   margin: 0; 
   font-size: 12px;
-  font-family: $font-family-sans-serif;
-  background-color: $primary;
-  color: $on-primary;
+  font-family: font(family, sans-serif);
+  background-color: color(theme, primary);
+  color: color(on-theme, primary)
 }
 
 #app {
   > div {
     padding: 2em;
     font-family: $font-family-monospace;
-    background-color: $background;
+    background-color: color(theme, background);
     text-align: center;
-    color: $on-background;
+    color: color(on-theme, background);
 
     img {
       padding: 2em;
     }
     hr {
-      color: $on-background;
+      color: color(on-theme, background)
     }
     h1 {
       text-align: center;
